@@ -1,0 +1,507 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+
+import {
+  Smartphone,
+  Code2,
+  BrainCircuit,
+  Cpu,
+  Database,
+  GitBranch,
+  Activity,
+  Boxes,
+  Terminal,
+} from 'lucide-react';
+
+import './styles.css';
+
+const projects = [
+  {
+    number: '01',
+    title: 'NAGA SHAWLS IDENTIFIER',
+    type: 'AI / ML · MOBILE APPLICATION',
+    description:
+      'A machine-learning based mobile application designed to identify traditional Naga shawls from images using computer vision and image classification.',
+    tech: [
+      'React Native',
+      'Expo',
+      'Python',
+      'PyTorch',
+      'ResNet50',
+      'VGG16',
+      'ConvNeXt',
+    ],
+    accent: 'naga',
+  },
+  {
+    number: '02',
+    title: 'CAMPUSPLUS',
+    type: 'MOBILE APPLICATION',
+    description:
+      'A campus-focused mobile application designed to bring useful student activities and campus-related functionality into a single application.',
+    tech: [
+      'React Native',
+      'Expo',
+      'JavaScript',
+      'Firebase',
+    ],
+    accent: 'campus',
+  },
+];
+
+const skills = [
+  { name: 'React Native', icon: Smartphone },
+  { name: 'JavaScript', icon: Code2 },
+  { name: 'Python', icon: Terminal },
+  { name: 'AI / ML', icon: BrainCircuit },
+  { name: 'PyTorch', icon: Cpu },
+  { name: 'TensorFlow', icon: Cpu },
+  
+  { name: 'Git / GitHub', icon: GitBranch },
+  { name: 'MATLAB', icon: Activity },
+
+];
+
+function App() {
+  const go = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <div className="site">
+
+      {/* ================= NAVIGATION ================= */}
+
+      <header className="nav">
+        <button
+          className="brand"
+          onClick={() => go('home')}
+        >
+          L.
+        </button>
+
+        <nav>
+          {['about', 'skills', 'projects', 'education', 'contact'].map(
+            (item) => (
+              <button
+                key={item}
+                onClick={() => go(item)}
+              >
+                {item}
+              </button>
+            )
+          )}
+        </nav>
+      </header>
+
+      <main>
+
+        {/* ================= HERO ================= */}
+
+        <section id="home" className="hero">
+
+          <div>
+
+            <p className="eyebrow">
+              ELECTRICAL & ELECTRONICS ENGINEERING · DEVELOPER
+            </p>
+
+            <h1 className="name">
+              LIMSEN
+            </h1>
+
+            <h2>
+              Building ideas
+              <br />
+              <span>into useful things.</span>
+            </h2>
+
+            <p className="hero-text">
+              BTech EEE student exploring software development,
+              artificial intelligence, computer vision, mobile
+              applications, and engineering systems.
+            </p>
+
+            <div className="hero-actions">
+
+              <button
+                className="primary"
+                onClick={() => go('projects')}
+              >
+                View my work
+              </button>
+
+              <button
+                className="secondary"
+                onClick={() => go('contact')}
+              >
+                Get in touch
+              </button>
+
+            </div>
+
+          </div>
+
+          <div className="hero-mark">
+
+            <div className="orbit one" />
+            <div className="orbit two" />
+
+            <div className="core">
+              L
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ================= ABOUT ================= */}
+
+        <section id="about" className="section">
+
+          <div className="label">
+            01 / ABOUT
+          </div>
+
+          <div className="two">
+
+            <h2>
+              Engineer by education.
+              <br />
+              <span>Builder by curiosity.</span>
+            </h2>
+
+            <div>
+
+              <p>
+                I am an Electrical & Electronics Engineering
+                student with a strong interest in technology
+                beyond the classroom. My work combines
+                engineering fundamentals with software,
+                AI, and mobile development.
+              </p>
+
+              <p>
+                I enjoy taking an idea from a problem statement
+                to a working prototype, learning the tools
+                required along the way.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ================= SKILLS ================= */}
+
+        <section id="skills" className="section">
+
+          <div className="label">
+            02 / SKILLS
+          </div>
+
+          <h2>
+            Tools I work with.
+          </h2>
+
+          <div className="skills">
+
+            {skills.map((skill) => {
+
+              const Icon = skill.icon;
+
+              return (
+                <div
+                  className="skill"
+                  key={skill.name}
+                >
+
+                  <Icon
+                    className="skill-icon"
+                    size={22}
+                    strokeWidth={1.8}
+                  />
+
+                  <span>
+                    {skill.name}
+                  </span>
+
+                </div>
+              );
+
+            })}
+
+          </div>
+
+        </section>
+
+
+        {/* ================= PROJECTS ================= */}
+
+        <section id="projects" className="section">
+
+          <div className="label">
+            03 / PROJECTS
+          </div>
+
+          <div className="heading">
+
+            <h2>
+              MY PROJECTS.
+            </h2>
+
+            <span>
+              02 PROJECTS
+            </span>
+
+          </div>
+
+          {projects.map((project) => (
+
+            <article
+              className={`project-card ${project.accent}`}
+              key={project.number}
+            >
+
+              <div className="project-content">
+
+                <div className="project-top">
+
+                  <span className="project-number">
+                    {project.number}
+                  </span>
+
+                  <span className="project-type">
+                    {project.type}
+                  </span>
+
+                </div>
+
+                <h3>
+                  {project.title}
+                </h3>
+
+                <p className="project-description">
+                  {project.description}
+                </p>
+
+                <div className="project-tech">
+
+                  {project.tech.map((item) => (
+
+                    <span key={item}>
+                      {item}
+                    </span>
+
+                  ))}
+
+                </div>
+
+                <button
+                  className="project-link"
+                  onClick={() => go('contact')}
+                >
+                  Discuss project
+                  <span>↗</span>
+                </button>
+
+              </div>
+
+
+              <div className="project-visual">
+
+                <div className="visual-grid" />
+
+                <div className="project-device">
+
+                  <div className="device-screen">
+
+                    <span>
+                      {project.number}
+                    </span>
+
+                    <strong>
+                      {project.accent === 'naga'
+                        ? 'NS'
+                        : 'CP'}
+                    </strong>
+
+                  </div>
+
+                </div>
+
+                <div className="visual-label">
+
+                  <span>
+                    PROJECT
+                  </span>
+
+                  <strong>
+                    {project.number}
+                  </strong>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          ))}
+
+        </section>
+
+
+        {/* ================= EDUCATION ================= */}
+
+        <section
+          id="education"
+          className="section"
+        >
+
+          <div className="label">
+            04 / EDUCATION
+          </div>
+
+          <div className="two">
+
+            <div>
+
+              <p className="muted">
+                CURRENT
+              </p>
+
+              <h2>
+                BTech Electrical &
+                <br />
+                Electronics Engineering
+              </h2>
+
+            </div>
+
+            <p>
+              Engineering studies covering electrical machines,
+              power systems, control systems, signals, digital
+              systems, electronics, MATLAB, Simulink, and
+              related technical subjects.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        {/* ================= EXPLORING ================= */}
+
+        <section className="section">
+
+          <div className="label">
+            05 / EXPLORING
+          </div>
+
+          <h2>
+            Currently exploring.
+          </h2>
+
+          <div className="pills">
+
+            {[
+              'Full-Stack Development',
+              'Cybersecurity',
+              'Generative AI',
+              'Computer Vision',
+              'Mobile Development',
+            ].map((item) => (
+
+              <span key={item}>
+                {item}
+              </span>
+
+            ))}
+
+          </div>
+
+        </section>
+
+
+        {/* ================= CONTACT ================= */}
+
+        <section
+          id="contact"
+          className="contact"
+        >
+
+          <div className="label">
+            06 / CONTACT
+          </div>
+
+          <h2>
+            Have an idea?
+            <br />
+            <span>Let's build it.</span>
+          </h2>
+
+          <p>
+            Open to internships, projects, collaboration,
+            and technical opportunities.
+          </p>
+
+          <div className="contact-links">
+
+            <a
+              href="https://github.com/LimsenAier"
+              target="_blank"
+              rel="noreferrer"
+            >
+              GitHub ↗
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/LimsenAier"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn ↗
+            </a>
+
+            <a href="mailto:limsen098@gmail.com">
+              Email ↗
+            </a>
+
+          </div>
+
+        </section>
+
+      </main>
+
+
+      {/* ================= FOOTER ================= */}
+
+      <footer>
+
+        <span>
+          © 2026 NS. PORTFOLIO
+        </span>
+
+        <span>
+          EEE · AI / ML · SOFTWARE
+        </span>
+
+      </footer>
+
+    </div>
+  );
+}
+
+
+createRoot(
+  document.getElementById('root')
+).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
