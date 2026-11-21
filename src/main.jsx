@@ -1,5 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import nagaShawl from "./assets/nagaShawl.jpeg";
+import campus from "./assets/campus.png";
+import { ArrowRight } from 'lucide-react';
 
 import {
   Smartphone,
@@ -18,36 +21,26 @@ import './styles.css';
 const projects = [
   {
     number: '01',
-    title: 'NAGA SHAWLS IDENTIFIER',
-    type: 'AI / ML · MOBILE APPLICATION',
+    title: 'Naga Shawls Identifier',
+    type: 'AI / ML MOBILE APPLICATION',
     description:
-      'A machine-learning based mobile application designed to identify traditional Naga shawls from images using computer vision and image classification.',
-    tech: [
-      'React Native',
-      'Expo',
-      'Python',
-      'PyTorch',
-      'ResNet50',
-      'VGG16',
-      'ConvNeXt',
-    ],
+      'A mobile application that identifies traditional Naga shawls using image classification and machine learning.',
+    tech: ['React Native', 'Python', 'PyTorch', 'VGG16'],
+    image: nagaShawl,
     accent: 'naga',
   },
   {
     number: '02',
-    title: 'CAMPUSPLUS',
+    title: 'CampusPlus',
     type: 'MOBILE APPLICATION',
     description:
-      'A campus-focused mobile application designed to bring useful student activities and campus-related functionality into a single application.',
-    tech: [
-      'React Native',
-      'Expo',
-      'JavaScript',
-      'Firebase',
-    ],
+      'A campus-focused mobile application designed to bring useful student activities and campus functionality together.',
+    tech: ['React Native', 'Expo', 'JavaScript', 'Firebase'],
+    image: campus,
     accent: 'campus',
   },
 ];
+
 
 const skills = [
   { name: 'React Native', icon: Smartphone },
@@ -105,18 +98,19 @@ function App() {
           <div>
 
             <p className="eyebrow">
-              ELECTRICAL & ELECTRONICS ENGINEERING · DEVELOPER
+              ELECTRICAL & ELECTRONICS ENGINEERING · FULL STACK DEVELOPER
             </p>
+            
+            <h1 className="greeting">Hi I'm</h1>
 
-            <h1 className="name">
-              LIMSEN
-            </h1>
-
-            <h2>
-              Building ideas
+            <h2 className="name">
+               LIMSEN
+            </h2>
+            <h3>
+              I turn ideas
               <br />
               <span>into useful things.</span>
-            </h2>
+            </h3>
 
             <p className="hero-text">
               BTech EEE student exploring software development,
@@ -240,121 +234,82 @@ function App() {
 
         </section>
 
+      
+{/* ================= PROJECTS ================= */}
 
-        {/* ================= PROJECTS ================= */}
+<section id="projects" className="section projects-section">
 
-        <section id="projects" className="section">
+  <div className="label">
+    03 / PROJECTS
+  </div>
 
-          <div className="label">
-            03 / PROJECTS
-          </div>
+  <div className="heading">
+    <h2>SELECTED WORK.</h2>
+    <span>02 PROJECTS</span>
+  </div>
 
-          <div className="heading">
+  <div className="projects-grid">
 
-            <h2>
-              MY PROJECTS.
-            </h2>
+    {projects.map((project) => (
 
-            <span>
-              02 PROJECTS
+      <article
+        className={`project-card ${project.accent}`}
+        key={project.number}
+      >
+
+        {/* Project Screenshot */}
+
+        <div className="project-image">
+          <img
+            src={project.image}
+            alt={`${project.title} application preview`}
+            loading="lazy"
+          />
+
+          <span className="image-number">
+            {project.number}
+          </span>
+        </div>
+
+        {/* Project Information */}
+
+        <div className="project-content">
+
+          <div className="project-top">
+            <span className="project-type">
+              {project.type}
             </span>
 
+            <span className="project-index">
+              {project.number} / 02
+            </span>
           </div>
 
-          {projects.map((project) => (
+          <h3>{project.title}</h3>
 
-            <article
-              className={`project-card ${project.accent}`}
-              key={project.number}
-            >
+          <p className="project-description">
+            {project.description}
+          </p>
 
-              <div className="project-content">
+          <div className="project-tech">
+            {project.tech.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
 
-                <div className="project-top">
+          <button className="project-link">
+            View Project <ArrowRight size={15} />
+          </button>
 
-                  <span className="project-number">
-                    {project.number}
-                  </span>
+        </div>
 
-                  <span className="project-type">
-                    {project.type}
-                  </span>
+      </article>
 
-                </div>
+    ))}
 
-                <h3>
-                  {project.title}
-                </h3>
+  </div>
 
-                <p className="project-description">
-                  {project.description}
-                </p>
-
-                <div className="project-tech">
-
-                  {project.tech.map((item) => (
-
-                    <span key={item}>
-                      {item}
-                    </span>
-
-                  ))}
-
-                </div>
-
-                <button
-                  className="project-link"
-                  onClick={() => go('contact')}
-                >
-                  Discuss project
-                  <span>↗</span>
-                </button>
-
-              </div>
-
-
-              <div className="project-visual">
-
-                <div className="visual-grid" />
-
-                <div className="project-device">
-
-                  <div className="device-screen">
-
-                    <span>
-                      {project.number}
-                    </span>
-
-                    <strong>
-                      {project.accent === 'naga'
-                        ? 'NS'
-                        : 'CP'}
-                    </strong>
-
-                  </div>
-
-                </div>
-
-                <div className="visual-label">
-
-                  <span>
-                    PROJECT
-                  </span>
-
-                  <strong>
-                    {project.number}
-                  </strong>
-
-                </div>
-
-              </div>
-
-            </article>
-
-          ))}
-
-        </section>
-
+</section>
 
         {/* ================= EDUCATION ================= */}
 
