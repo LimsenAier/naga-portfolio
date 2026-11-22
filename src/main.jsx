@@ -7,7 +7,7 @@ import CampusPlus from './pages/CampusPlus';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/naga-portfolio">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/naga-shawls" element={<NagaShawls />} />
